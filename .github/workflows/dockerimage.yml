@@ -13,6 +13,8 @@ jobs:
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag docker.pkg.github.com/dipayan90/${GITHUB_REPOSITORY}:${GITHUB_SHA} --tag docker.pkg.github.com/dipayan90/${GITHUB_REPOSITORY}:latest
     - name: Login to Github docker Registry
-      run: docker login docker.pkg.github.com --username dipayan90 --password ${GITHUB_PASSWORD}
+      with: 
+        github_password: ${{secrets.GITHUB_PASSWORD}}
+      run: docker login docker.pkg.github.com --username dipayan90 --password github_password
     - name: Push Image To Registry
       run: docker push docker.pkg.github.com/dipayan90/${GITHUB_REPOSITORY}:${GITHUB_SHA} && docker push docker.pkg.github.com/dipayan90/${GITHUB_REPOSITORY}:latest
