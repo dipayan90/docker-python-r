@@ -11,10 +11,10 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag docker.pkg.github.com/${GITHUB_REPOSITORY}:${GITHUB_SHA} --tag docker.pkg.github.com/${GITHUB_REPOSITORY}:latest
+      run: docker build . --file Dockerfile --tag docker.pkg.github.com/${GITHUB_REPOSITORY}/base:${GITHUB_SHA} --tag docker.pkg.github.com/${GITHUB_REPOSITORY}/base:latest
     - name: Login to Github docker Registry
       env: 
         github_password: ${{ secrets.GITHUB_PASSWORD }}
       run: docker login docker.pkg.github.com --username dipayan90 --password $github_password
     - name: Push Image To Registry
-      run: docker push docker.pkg.github.com/${GITHUB_REPOSITORY}:${GITHUB_SHA} && docker push docker.pkg.github.com/${GITHUB_REPOSITORY}:latest
+      run: docker push docker.pkg.github.com/${GITHUB_REPOSITORY}/base:${GITHUB_SHA} && docker push docker.pkg.github.com/${GITHUB_REPOSITORY}/base:latest
