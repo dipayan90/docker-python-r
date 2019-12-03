@@ -5,5 +5,5 @@ A thin docker image having installation of `Python` and `R`. Can be used for dat
 ## Usage Instructions
 
 ```bash
-docker pull docker.pkg.github.com/dipayan90/docker-python-r:latest
+docker run -it docker.pkg.github.com/dipayan90/docker-python-r/base:latest
 ```
