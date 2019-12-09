@@ -18,7 +18,11 @@ jobs:
       run: docker build . --file docker/base/Dockerfile --tag docker.pkg.github.com/${GITHUB_REPOSITORY}/base:${GITHUB_SHA} --tag docker.pkg.github.com/${GITHUB_REPOSITORY}/base:latest
     - name: Build the Codeserver Docker image
       run: docker build . --file docker/codeserver/Dockerfile --tag docker.pkg.github.com/${GITHUB_REPOSITORY}/codeserver:${GITHUB_SHA} --tag docker.pkg.github.com/${GITHUB_REPOSITORY}/codeserver:latest
+    - name: Build the RStudio Docker image
+      run: docker build . --file docker/rstudio/Dockerfile --tag docker.pkg.github.com/${GITHUB_REPOSITORY}/rstudio-codeserver:${GITHUB_SHA} --tag docker.pkg.github.com/${GITHUB_REPOSITORY}/rstudio-codeserver:latest
     - name: Push Base Image To Registry
       run: docker push docker.pkg.github.com/${GITHUB_REPOSITORY}/base:${GITHUB_SHA} && docker push docker.pkg.github.com/${GITHUB_REPOSITORY}/base:latest
     - name: Push Codeserver Image To Registry
       run: docker push docker.pkg.github.com/${GITHUB_REPOSITORY}/codeserver:${GITHUB_SHA} && docker push docker.pkg.github.com/${GITHUB_REPOSITORY}/codeserver:latest
+    - name: Push rstudio Image To Registry
+      run: docker push docker.pkg.github.com/${GITHUB_REPOSITORY}/rstudio-codeserver:${GITHUB_SHA} && docker push docker.pkg.github.com/${GITHUB_REPOSITORY}/rstudio-codeserver:latest
